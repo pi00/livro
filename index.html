@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy policy for Livro, the focused speed-reading app for iPhone.">
+  <meta name="theme-color" content="#f5efe2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161a1f" media="(prefers-color-scheme: dark)">
+  <title>Privacy Policy — Livro</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --paper: #f5efe2;
+      --paper-raised: #faf5ea;
+      --ink: #2a2520;
+      --muted: #665e50;
+      --line: rgba(42, 37, 32, 0.16);
+      --accent: #a8482d;
+      --accent-soft: rgba(168, 72, 45, 0.10);
+      --shadow: 0 18px 45px rgba(75, 55, 36, 0.08);
+      --page-width: 47rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #161a1f;
+        --paper-raised: #1e232a;
+        --ink: #e6eaf0;
+        --muted: #aab3c0;
+        --line: rgba(230, 234, 240, 0.14);
+        --accent: #5db8e0;
+        --accent-soft: rgba(93, 184, 224, 0.11);
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+      }
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(90deg, transparent calc(50% - 1px), var(--line) 50%, transparent calc(50% + 1px)) top 10.75rem center / 8rem 1px no-repeat,
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-rounded, "SF Pro Rounded", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    a:hover {
+      text-decoration-thickness: 0.13em;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 0.2rem;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 10;
+      top: 0.75rem;
+      left: 0.75rem;
+      padding: 0.6rem 0.85rem;
+      border-radius: 0.5rem;
+      background: var(--ink);
+      color: var(--paper);
+      transform: translateY(-180%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    header,
+    main,
+    footer {
+      width: min(calc(100% - 2rem), var(--page-width));
+      margin-inline: auto;
+    }
+
+    header {
+      padding: clamp(3.5rem, 9vw, 7rem) 0 2.25rem;
+      text-align: center;
+    }
+
+    .wordmark {
+      display: inline-block;
+      margin: 0 0 1.4rem;
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      font-weight: 760;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    .wordmark .focus-letter {
+      color: var(--accent);
+    }
+
+    h1,
+    h2 {
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 12ch;
+      margin: 0 auto;
+      font-size: clamp(2.55rem, 8vw, 5.25rem);
+      font-weight: 760;
+      letter-spacing: -0.055em;
+      line-height: 0.98;
+    }
+
+    .lede {
+      max-width: 35rem;
+      margin: 1.5rem auto 0;
+      color: var(--muted);
+      font-size: clamp(1.06rem, 2vw, 1.2rem);
+      line-height: 1.55;
+      text-wrap: pretty;
+    }
+
+    .effective-date {
+      margin: 1.25rem 0 0;
+      color: var(--muted);
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .promise {
+      position: relative;
+      margin: 1.25rem 0 3rem;
+      padding: clamp(1.5rem, 5vw, 2.5rem);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      background: var(--paper-raised);
+      box-shadow: var(--shadow);
+    }
+
+    .promise::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 0.3rem;
+      background: var(--accent);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.5rem;
+      color: var(--accent);
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .promise h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 4vw, 2.15rem);
+      line-height: 1.18;
+    }
+
+    .promise p:last-child {
+      max-width: 57ch;
+      margin: 0.9rem 0 0;
+      color: var(--muted);
+    }
+
+    nav {
+      margin-bottom: 3.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav p {
+      margin: 0 0 0.65rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav a {
+      display: inline-block;
+      padding: 0.45rem 0.72rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--accent-soft);
+      font-size: 0.88rem;
+      text-decoration: none;
+    }
+
+    section {
+      scroll-margin-top: 1.5rem;
+      margin-bottom: 3.25rem;
+    }
+
+    section h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.45rem, 3vw, 1.9rem);
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+    }
+
+    section p,
+    section li {
+      max-width: 68ch;
+    }
+
+    section p {
+      margin: 0.85rem 0;
+    }
+
+    section ul {
+      margin: 1rem 0;
+      padding-left: 1.2rem;
+    }
+
+    section li {
+      padding-left: 0.35rem;
+    }
+
+    section li + li {
+      margin-top: 0.65rem;
+    }
+
+    strong {
+      font-weight: 720;
+    }
+
+    .note {
+      margin-top: 1.25rem;
+      padding: 1rem 1.1rem;
+      border-left: 0.2rem solid var(--accent);
+      background: var(--accent-soft);
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 4.5rem;
+      padding: 2rem 0 3.5rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 0.35rem 0;
+    }
+
+    @media (max-width: 34rem) {
+      body {
+        background-position: top 9.4rem center;
+      }
+
+      header,
+      main,
+      footer {
+        width: min(calc(100% - 1.4rem), var(--page-width));
+      }
+
+      header {
+        padding-top: 3.25rem;
+      }
+
+      .promise {
+        border-radius: 1rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    @media print {
+      :root {
+        --paper: #ffffff;
+        --paper-raised: #ffffff;
+        --ink: #111111;
+        --muted: #404040;
+        --line: #cccccc;
+        --accent: #8d3624;
+        --accent-soft: transparent;
+        --shadow: none;
+      }
+
+      body {
+        background: #ffffff;
+        font-size: 10.5pt;
+      }
+
+      header {
+        padding-top: 1rem;
+      }
+
+      nav,
+      .skip-link {
+        display: none;
+      }
+
+      .promise {
+        break-inside: avoid;
+      }
+
+      section {
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#policy">Skip to privacy policy</a>
+
+  <header>
+    <p class="wordmark" aria-label="Livro">L<span class="focus-letter">i</span>vro</p>
+    <h1>Privacy, at reading speed.</h1>
+    <p class="lede">Livro is designed so your books, articles, reading activity, and preferences stay on your iPhone.</p>
+    <p class="effective-date">Effective <time datetime="2026-08-19">August 19, 2026</time></p>
+  </header>
+
+  <main id="policy">
+    <article>
+      <div class="promise">
+        <p class="eyebrow">The short version</p>
+        <h2>Your reading stays yours.</h2>
+        <p>Livro does not run advertising, use tracking technology, or automatically send your reading data to the developer. The app has no developer-operated account or cloud service.</p>
+      </div>
+
+      <nav aria-label="Privacy policy sections">
+        <p>On this page</p>
+        <ul>
+          <li><a href="#stored">On-device data</a></li>
+          <li><a href="#camera">Camera</a></li>
+          <li><a href="#network">Network requests</a></li>
+          <li><a href="#purchases">Purchases</a></li>
+          <li><a href="#diagnostics">Diagnostics</a></li>
+          <li><a href="#choices">Your choices</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <section id="stored">
+        <h2>Information stored on your device</h2>
+        <p>Livro stores the information needed to provide its reading features locally in the app's private storage. This may include:</p>
+        <ul>
+          <li>EPUB books and articles you choose to import;</li>
+          <li>reading position, bookmarks, notes, finished and archived status;</li>
+          <li>reading settings and accessibility preferences; and</li>
+          <li>reading-session statistics, such as words read, reading time, and reading speed.</li>
+        </ul>
+        <p>This information is not uploaded to a Livro server. Your operating-system backup settings may include app data in an iCloud or device backup; those backups are controlled by you and governed by Apple's policies.</p>
+      </section>
+
+      <section id="camera">
+        <h2>Optional camera access</h2>
+        <p>If you enable eye-guided pacing on a supported device, Livro asks for access to the front camera. Face and gaze information is processed on your device to pause or resume reading when you look away.</p>
+        <p>Livro does not record camera video or photos, store face data, use face data to identify you, or send camera data off your device. You can disable camera access at any time in iOS Settings.</p>
+      </section>
+
+      <section id="network">
+        <h2>Network requests you initiate</h2>
+        <p>Livro may connect directly from your device to a third-party website when you choose to browse a public book catalog, download a book, or import an article from a URL. That website may receive standard request information such as your IP address, device/browser details, and the requested URL, according to its own privacy policy.</p>
+        <p>Livro does not use these requests to build a browsing profile and does not send your imported content to the developer.</p>
+      </section>
+
+      <section id="purchases">
+        <h2>Subscriptions and purchases</h2>
+        <p>Subscriptions are offered through Apple's App Store and StoreKit. Apple processes your payment and account information. Livro receives only the subscription status needed to unlock paid features; the developer does not receive your full payment-card details.</p>
+        <p>For information about Apple's handling of purchase data, see <a href="https://www.apple.com/legal/privacy/" rel="external">Apple's Privacy Policy</a>.</p>
+      </section>
+
+      <section id="diagnostics">
+        <h2>Diagnostics and bug reports</h2>
+        <p>Apple's MetricKit framework may provide performance and crash diagnostics to Livro. These diagnostics are kept in the app's protected local storage and are not automatically transmitted to the developer.</p>
+        <p>If you choose <strong>Report a bug</strong>, Livro opens your mail composer and prepares a message with a diagnostic file attached. You can review or cancel the email before sending it. The attachment may include:</p>
+        <ul>
+          <li>app version, build number, iOS version, and device model;</li>
+          <li>selected app settings;</li>
+          <li>aggregate reading statistics from the previous seven days; and</li>
+          <li>recent technical error messages.</li>
+        </ul>
+        <p>The prepared diagnostic file is designed not to include book or article text, notes, file paths, contact lists, or advertising identifiers. If you send the report, the email address you use, anything you write, and the attachment will be processed by your email provider and received by the developer for support purposes.</p>
+      </section>
+
+      <section id="tracking">
+        <h2>No advertising or tracking</h2>
+        <p>Livro does not include third-party advertising or analytics SDKs. It does not track you across apps or websites, sell personal information, or use data for targeted advertising.</p>
+      </section>
+
+      <section id="choices">
+        <h2>Your choices and data deletion</h2>
+        <p>You can remove imported items and reset reading data from within Livro. You can also remove the app and its locally stored data through iOS. Copies may remain in device backups until those backups expire or are deleted under your Apple account settings.</p>
+        <p>You control optional permissions, including camera access, in iOS Settings.</p>
+      </section>
+
+      <section id="changes">
+        <h2>Changes to this policy</h2>
+        <p>This policy may be updated when Livro's features or privacy practices change. The effective date at the top of this page will be updated when that happens.</p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Questions about this privacy policy can be sent to <a href="mailto:voopat@gmail.com">voopat@gmail.com</a>.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p><strong>Livro</strong> · Speed reading for iPhone</p>
+    <p><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="external">Terms of Use (Apple Standard EULA)</a></p>
+  </footer>
+</body>
+</html>
