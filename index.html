@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Livro is a focused RSVP reader for EPUB books on iPhone.">
+  <meta name="theme-color" content="#f5efe2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161a1f" media="(prefers-color-scheme: dark)">
+  <title>Livro — Focused reading for iPhone</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --paper: #f5efe2;
+      --paper-raised: #faf5ea;
+      --ink: #2a2520;
+      --muted: #665e50;
+      --line: rgba(42, 37, 32, 0.16);
+      --accent: #a8482d;
+      --accent-soft: rgba(168, 72, 45, 0.10);
+      --shadow: 0 18px 45px rgba(75, 55, 36, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #161a1f;
+        --paper-raised: #1e232a;
+        --ink: #e6eaf0;
+        --muted: #aab3c0;
+        --line: rgba(230, 234, 240, 0.14);
+        --accent: #5db8e0;
+        --accent-soft: rgba(93, 184, 224, 0.11);
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+      }
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100svh;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-rounded, "SF Pro Rounded", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .page {
+      display: grid;
+      width: min(calc(100% - 2rem), 47rem);
+      min-height: 100svh;
+      margin-inline: auto;
+      padding: clamp(2rem, 6vw, 4rem) 0 1.5rem;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .wordmark {
+      margin: 0;
+      text-align: center;
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      font-weight: 760;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    .focus-letter {
+      color: var(--accent);
+    }
+
+    main {
+      display: grid;
+      padding: clamp(3rem, 9vw, 6rem) 0;
+      align-content: center;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .reader-mark {
+      position: relative;
+      display: grid;
+      width: min(100%, 25rem);
+      min-height: 7rem;
+      margin-bottom: 1.75rem;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .reader-mark::before,
+    .reader-mark::after {
+      content: "";
+      position: absolute;
+      background: var(--line);
+    }
+
+    .reader-mark::before {
+      width: 100%;
+      height: 1px;
+    }
+
+    .reader-mark::after {
+      width: 1px;
+      height: 100%;
+    }
+
+    .reader-word {
+      position: relative;
+      z-index: 1;
+      padding: 0 0.4rem;
+      background: var(--paper);
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: clamp(3.3rem, 12vw, 5.4rem);
+      font-weight: 700;
+      letter-spacing: -0.1em;
+      line-height: 1;
+    }
+
+    h1 {
+      max-width: 12ch;
+      margin: 0;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 760;
+      letter-spacing: -0.06em;
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    .lede {
+      max-width: 34rem;
+      margin: 1.4rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+
+    .links {
+      display: grid;
+      width: 100%;
+      margin-top: clamp(2.5rem, 6vw, 4rem);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .link-card {
+      display: grid;
+      min-height: 7.5rem;
+      padding: 1.3rem;
+      align-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: var(--paper-raised);
+      box-shadow: var(--shadow);
+      color: var(--ink);
+      text-align: left;
+      text-decoration: none;
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+
+    .link-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .link-card strong {
+      font-size: 1.15rem;
+      font-weight: 740;
+    }
+
+    .link-card span {
+      display: flex;
+      gap: 1rem;
+      align-items: end;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .link-card span::after {
+      content: "→";
+      flex: none;
+      color: var(--accent);
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 34rem) {
+      .page {
+        width: min(calc(100% - 1.4rem), 47rem);
+      }
+
+      main {
+        padding-block: 3rem;
+      }
+
+      .reader-mark {
+        min-height: 5.5rem;
+      }
+
+      .links {
+        grid-template-columns: 1fr;
+      }
+
+      .link-card {
+        min-height: 6.5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .link-card {
+        transition: none;
+      }
+    }
+
+    @media print {
+      :root {
+        --paper: #ffffff;
+        --paper-raised: #ffffff;
+        --ink: #111111;
+        --muted: #404040;
+        --line: #cccccc;
+        --accent: #8d3624;
+        --shadow: none;
+      }
+
+      .page {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="wordmark" aria-label="Livro">L<span class="focus-letter">i</span>vro</p>
+    </header>
+
+    <main>
+      <div class="reader-mark" aria-hidden="true">
+        <span class="reader-word">r<span class="focus-letter">e</span>ad</span>
+      </div>
+      <h1>Focused reading for tricky EPUBs.</h1>
+      <p class="lede">Livro turns EPUB books into a focused, word-by-word reading stream on iPhone.</p>
+
+      <nav class="links" aria-label="Livro information">
+        <a class="link-card" href="./support/">
+          <strong>Support</strong>
+          <span>Answers and contact</span>
+        </a>
+        <a class="link-card" href="./privacy/">
+          <strong>Privacy</strong>
+          <span>How your data is handled</span>
+        </a>
+      </nav>
+    </main>
+
+    <footer>
+      <p>© 2026 Livro · Speed reading for iPhone</p>
+    </footer>
+  </div>
+</body>
+</html>
