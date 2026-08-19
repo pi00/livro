@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Help, troubleshooting, and contact information for Livro, the focused speed-reading app for iPhone.">
+  <meta name="theme-color" content="#f5efe2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161a1f" media="(prefers-color-scheme: dark)">
+  <title>Support — Livro</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --paper: #f5efe2;
+      --paper-raised: #faf5ea;
+      --ink: #2a2520;
+      --muted: #665e50;
+      --line: rgba(42, 37, 32, 0.16);
+      --accent: #a8482d;
+      --accent-deep: #84351f;
+      --accent-soft: rgba(168, 72, 45, 0.10);
+      --shadow: 0 18px 45px rgba(75, 55, 36, 0.08);
+      --page-width: 47rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #161a1f;
+        --paper-raised: #1e232a;
+        --ink: #e6eaf0;
+        --muted: #aab3c0;
+        --line: rgba(230, 234, 240, 0.14);
+        --accent: #5db8e0;
+        --accent-deep: #82c9e8;
+        --accent-soft: rgba(93, 184, 224, 0.11);
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+      }
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-rounded, "SF Pro Rounded", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent-deep);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    a:hover {
+      text-decoration-thickness: 0.13em;
+    }
+
+    a:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 0.25rem;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 10;
+      top: 0.75rem;
+      left: 0.75rem;
+      padding: 0.6rem 0.85rem;
+      border-radius: 0.5rem;
+      background: var(--ink);
+      color: var(--paper);
+      transform: translateY(-180%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    header,
+    main,
+    footer {
+      width: min(calc(100% - 2rem), var(--page-width));
+      margin-inline: auto;
+    }
+
+    header {
+      padding: clamp(3.25rem, 8vw, 6.5rem) 0 2.5rem;
+      text-align: center;
+    }
+
+    .wordmark {
+      display: inline-block;
+      margin: 0 0 2.2rem;
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      font-weight: 760;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    .wordmark .focus-letter,
+    .reader-word .focus-letter {
+      color: var(--accent);
+    }
+
+    .reader-mark {
+      position: relative;
+      display: grid;
+      width: min(100%, 25rem);
+      min-height: 7rem;
+      margin: 0 auto 1.8rem;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .reader-mark::before,
+    .reader-mark::after {
+      content: "";
+      position: absolute;
+      background: var(--line);
+    }
+
+    .reader-mark::before {
+      width: 100%;
+      height: 1px;
+    }
+
+    .reader-mark::after {
+      width: 1px;
+      height: 100%;
+    }
+
+    .reader-word {
+      position: relative;
+      z-index: 1;
+      padding: 0 0.35rem;
+      background: var(--paper);
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: clamp(2.8rem, 9vw, 4.65rem);
+      font-weight: 700;
+      letter-spacing: -0.09em;
+      line-height: 1;
+    }
+
+    h1,
+    h2 {
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 12ch;
+      margin: 0 auto;
+      font-size: clamp(2.35rem, 7vw, 4.5rem);
+      font-weight: 760;
+      letter-spacing: -0.055em;
+      line-height: 1;
+    }
+
+    .lede {
+      max-width: 35rem;
+      margin: 1.35rem auto 0;
+      color: var(--muted);
+      font-size: clamp(1.06rem, 2vw, 1.2rem);
+      line-height: 1.55;
+      text-wrap: pretty;
+    }
+
+    .contact-card {
+      position: relative;
+      margin: 1.25rem 0 4rem;
+      padding: clamp(1.5rem, 5vw, 2.5rem);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      background: var(--paper-raised);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 0.3rem;
+      background: var(--accent);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.5rem;
+      color: var(--accent-deep);
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .contact-card h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 4vw, 2.15rem);
+      line-height: 1.18;
+    }
+
+    .contact-card > p:not(.eyebrow) {
+      max-width: 58ch;
+      margin: 0.85rem 0 0;
+      color: var(--muted);
+    }
+
+    .email-button {
+      display: inline-flex;
+      min-height: 3rem;
+      margin-top: 1.35rem;
+      padding: 0.7rem 1.1rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.75rem;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 720;
+      text-decoration: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .email-button {
+        color: #111820;
+      }
+    }
+
+    .email-button:hover {
+      filter: brightness(0.95);
+      text-decoration: none;
+    }
+
+    .email-address {
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.87rem;
+    }
+
+    .section-heading {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 2.45rem);
+      letter-spacing: -0.035em;
+      line-height: 1.15;
+    }
+
+    .section-heading p:last-child {
+      margin: 0.6rem 0 0;
+      color: var(--muted);
+    }
+
+    .faq-list {
+      border-top: 1px solid var(--line);
+    }
+
+    details {
+      border-bottom: 1px solid var(--line);
+    }
+
+    summary {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+      align-items: center;
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: 720;
+      line-height: 1.35;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      color: var(--accent-deep);
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    .answer {
+      max-width: 65ch;
+      padding: 0 2.75rem 1.4rem 0;
+      color: var(--muted);
+    }
+
+    .answer p {
+      margin: 0;
+    }
+
+    .answer p + p,
+    .answer ul + p {
+      margin-top: 0.8rem;
+    }
+
+    .answer ol,
+    .answer ul {
+      margin: 0.7rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    .answer li + li {
+      margin-top: 0.35rem;
+    }
+
+    .report-checklist {
+      margin: 4rem 0 0;
+      padding: clamp(1.4rem, 4vw, 2rem);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: var(--accent-soft);
+    }
+
+    .report-checklist h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .report-checklist p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .report-checklist ul {
+      margin: 1rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    .report-checklist li + li {
+      margin-top: 0.4rem;
+    }
+
+    footer {
+      display: flex;
+      gap: 1rem;
+      margin-top: 4.5rem;
+      padding: 2rem 0 3.5rem;
+      align-items: baseline;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    footer nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    @media (max-width: 34rem) {
+      header,
+      main,
+      footer {
+        width: min(calc(100% - 1.4rem), var(--page-width));
+      }
+
+      header {
+        padding-top: 3rem;
+      }
+
+      .wordmark {
+        margin-bottom: 1.5rem;
+      }
+
+      .reader-mark {
+        min-height: 5.5rem;
+      }
+
+      .contact-card {
+        border-radius: 1rem;
+      }
+
+      .email-button {
+        width: 100%;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    @media print {
+      :root {
+        --paper: #ffffff;
+        --paper-raised: #ffffff;
+        --ink: #111111;
+        --muted: #404040;
+        --line: #cccccc;
+        --accent: #8d3624;
+        --accent-deep: #8d3624;
+        --accent-soft: transparent;
+        --shadow: none;
+      }
+
+      body {
+        background: #ffffff;
+        font-size: 10.5pt;
+      }
+
+      header {
+        padding-top: 1rem;
+      }
+
+      details {
+        break-inside: avoid;
+      }
+
+      details > .answer {
+        display: block;
+      }
+
+      .skip-link,
+      .email-button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#support">Skip to support</a>
+
+  <header>
+    <p class="wordmark" aria-label="Livro">L<span class="focus-letter">i</span>vro</p>
+    <div class="reader-mark" aria-hidden="true">
+      <span class="reader-word">h<span class="focus-letter">e</span>lp</span>
+    </div>
+    <h1>Let’s get you back to the book.</h1>
+    <p class="lede">Answers to common questions about importing, reading, subscriptions, and eye-guided pacing.</p>
+  </header>
+
+  <main id="support">
+    <section class="contact-card" aria-labelledby="contact-title">
+      <p class="eyebrow">Contact</p>
+      <h2 id="contact-title">Need a human?</h2>
+      <p>Send an email with what happened and what you expected. Screenshots are welcome, but please do not attach copyrighted books.</p>
+      <a class="email-button" href="mailto:voopat@gmail.com?subject=Livro%20Support">Email Livro support</a>
+      <p class="email-address">voopat@gmail.com</p>
+    </section>
+
+    <section aria-labelledby="quick-help-title">
+      <div class="section-heading">
+        <p class="eyebrow">Quick help</p>
+        <h2 id="quick-help-title">Start with the common fixes.</h2>
+        <p>Tap a question to see the answer.</p>
+      </div>
+
+      <div class="faq-list">
+        <details>
+          <summary>How do I import a book?</summary>
+          <div class="answer">
+            <ol>
+              <li>Open <strong>Library</strong>.</li>
+              <li>Tap the add button, then choose <strong>Import EPUB</strong>.</li>
+              <li>Select one or more <code>.epub</code> files from the Files picker.</li>
+            </ol>
+            <p>Livro supports EPUB books. It cannot open PDFs, Kindle files, or books protected by DRM.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Why does the reader pause on some words?</summary>
+          <div class="answer">
+            <p>Those pauses are intentional. Livro adds short beats at sentence endings, paragraph breaks, em dashes, and colons so the text keeps its rhythm and meaning.</p>
+            <p>To make them shorter or longer, open <strong>Settings → Pacing → Pause length</strong>.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How do I restore my subscription?</summary>
+          <div class="answer">
+            <p>Open <strong>Settings → Subscription</strong> and tap <strong>Restore Purchases</strong>. Make sure the iPhone is signed in with the same Apple Account used for the original purchase and has an internet connection.</p>
+            <p>You can also <a href="https://apps.apple.com/account/subscriptions" rel="external">manage your subscription with Apple</a>.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Eye-guided pacing is not working</summary>
+          <div class="answer">
+            <p>Eye-guided pacing requires a supported iPhone with a TrueDepth front camera. Open <strong>Settings → Eye-guided</strong>, allow camera access, and complete calibration while holding the phone as you normally read.</p>
+            <p>If camera permission was declined, enable it under <strong>iOS Settings → Privacy &amp; Security → Camera</strong>.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How do I report a bug?</summary>
+          <div class="answer">
+            <p>Email <a href="mailto:voopat@gmail.com?subject=Livro%20Bug%20Report">voopat@gmail.com</a>. Please describe the steps that caused the problem and include your Livro version, iOS version, and iPhone model.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Where is my reading data stored?</summary>
+          <div class="answer">
+            <p>Your imported books, notes, positions, preferences, and reading statistics stay in Livro’s private storage on your iPhone. Livro does not operate an account or cloud service.</p>
+            <p>Read the <a href="../privacy/">Livro Privacy Policy</a> for complete details.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <aside class="report-checklist" aria-labelledby="report-title">
+      <h2 id="report-title">What to include in a support email</h2>
+      <p>A little context usually makes the problem much faster to identify:</p>
+      <ul>
+        <li>Livro version and build, shown under <strong>Settings → About</strong>;</li>
+        <li>your iPhone model and iOS version;</li>
+        <li>the steps that led to the problem; and</li>
+        <li>what happened versus what you expected.</li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer>
+    <p><strong>Livro</strong> · Speed reading for iPhone</p>
+    <nav aria-label="Footer">
+      <a href="../privacy/">Privacy</a>
+      <a href="mailto:voopat@gmail.com">Email</a>
+    </nav>
+  </footer>
+</body>
+</html>
+
